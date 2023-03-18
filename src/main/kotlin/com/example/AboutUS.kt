@@ -4,10 +4,12 @@ import com.example.model.User
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
+import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
 
 fun Application.aboutUs(){
+
     routing {
 
         get("/") {
@@ -76,6 +78,27 @@ fun Application.aboutUs(){
         get("/redirect/user/data"){
             call.respondRedirect("/user")
         }
+
+        //staticfiles content
+        /*
+        * staticfiles without remote path
+        * ex: http://127.0.0.1:8080/signup.html
+        * */
+        static {
+            resources("staticfiles") //ResourcePackage
+            resource("Login.html") //remotepath
+        }
+
+        /*
+        * staticfiles with remote path
+        * ex: http://127.0.0.1:8080/Act/signup.html
+        * */
+
+       /* staticfiles("Act") {
+            resources("staticfiles")
+            resource("Login.html")
+        }*/
+
 
     }
 }
