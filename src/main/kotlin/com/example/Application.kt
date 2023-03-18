@@ -18,6 +18,7 @@ fun main(){
         module()
         aboutUs()
         login()
+        someCustom()
     }.start(wait = true)
 }
 

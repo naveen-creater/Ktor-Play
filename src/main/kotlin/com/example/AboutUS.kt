@@ -62,17 +62,7 @@ fun Application.aboutUs(){
             call.respond("Hi you are now working in the $companyName and your employee id is $empId")
         }
 
-        //send json response using get method
-        get("/user") {
-            val user = User("Naveenkumar k", "sry not getting")
-            try{
-                call.respond(message = user, status =HttpStatusCode.OK )
-
-            }catch (e:Exception){
-                call.respond(message = e.message.toString(), status =HttpStatusCode.BadRequest )
-
-            }
-        }
+     jsonSample()
 
         //redirect sample
         get("/redirect/user/data"){
@@ -104,7 +94,19 @@ fun Application.aboutUs(){
 }
 
 
+fun Route.jsonSample(){
+    //send json response using get method
+    get("/user") {
+        val user = User("Naveenkumar k", "sry not getting")
+        try{
+            call.respond(message = user, status =HttpStatusCode.OK )
 
+        }catch (e:Exception){
+            call.respond(message = e.message.toString(), status =HttpStatusCode.BadRequest )
+
+        }
+    }
+}
 
 
 
