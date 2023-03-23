@@ -99,7 +99,7 @@ fun Route.jsonSample(){
     get("/user") {
         val user = User("Naveenkumar k", "sry not getting")
         try{
-            call.respond(message = user, status =HttpStatusCode.OK )
+            call.respond(message = user, status =HttpStatusCode.BadRequest )
 
         }catch (e:Exception){
             call.respond(message = e.message.toString(), status =HttpStatusCode.BadRequest )
@@ -110,6 +110,7 @@ fun Route.jsonSample(){
 
 
 
+/*
 fun ApplicationEngineEnvironmentBuilder.envConfig() {
     module {
         module()
@@ -122,4 +123,4 @@ fun ApplicationEngineEnvironmentBuilder.envConfig() {
         host = "127.0.0.1"
         port = 9090
     }
-}
+}*/
