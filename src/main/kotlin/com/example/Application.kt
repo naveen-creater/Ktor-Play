@@ -19,10 +19,7 @@ fun main(){
         json()
       }
 
-        module()
-        aboutUs()
         login()
-        someCustom()
         //typeSafe
         bookData()
 
@@ -30,8 +27,4 @@ fun main(){
     }.start(wait = true)
 }
 
-fun Application.module(){
 
-//  aboutUs()
-//  login()
-}
