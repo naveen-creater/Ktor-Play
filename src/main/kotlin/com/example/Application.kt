@@ -19,6 +19,7 @@ fun main(){
         aboutUs()
         login()
         someCustom()
+
     }.start(wait = true)
 }
 
