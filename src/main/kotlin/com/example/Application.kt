@@ -1,6 +1,7 @@
 package com.example
 
 import com.example.Routing.userData
+import com.example.plugin.RequestLoggingPlugin
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -15,6 +16,7 @@ import javax.xml.stream.Location
 fun main(){
 
     embeddedServer(Netty, port = 8080){
+        install(RequestLoggingPlugin)
       install(ContentNegotiation){
         json()
       }
