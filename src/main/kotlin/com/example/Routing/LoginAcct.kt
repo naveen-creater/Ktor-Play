@@ -15,7 +15,7 @@ fun Application.login(){
         post("/login") {
             try{
                 val user = call.receive<User>()
-                call.respond(user)
+                call.respond(message = user, status = HttpStatusCode.OK)
 
             }catch (e:Exception){
                 val ap = e.message
@@ -26,6 +26,12 @@ fun Application.login(){
 
 //            println(user)
 
+        }
+
+        get("/"){
+            call.respond(status = HttpStatusCode(description = "OK for init", value = 200),
+                message = "Application Working fine"
+            )
         }
     }
 }

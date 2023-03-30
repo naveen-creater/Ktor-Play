@@ -18,9 +18,21 @@ fun Application.userData(){
         post("/putUserData") {
             val data = call.receive<UserData>()
             println(data)
-            Utils.listOfData.add(data)
 
-            call.respond(message = "user data store success!!", status = HttpStatusCode.OK)
+            if (Utils.listOfData.size != 0)Utils.listOfData.forEach {
+                if (it.id == data.id)
+                    return@post call.respond("Id is already there!")
+                else{
+                    Utils.listOfData.add(data)
+                    return@post call.respond(message = "user data store success!!",
+                        status = HttpStatusCode.OK)
+                }
+
+            }else{
+                Utils.listOfData.add(data)
+                call.respond(message = "user data store success, for First time", status = HttpStatusCode.OK)
+            }
+
         }
 
         get("/getAllUserData") {
@@ -34,8 +46,13 @@ fun Application.userData(){
         }
 
         get("/deleteAllData"){
-            Utils.listOfData.clear()
-            call.respond(message = "all data is clear now", status = HttpStatusCode.Forbidden)
+            if(Utils.listOfData.size == 0){
+                call.respond(message = "Already data is Empty!", status = HttpStatusCode.NotFound)
+            }else{
+                Utils.listOfData.clear()
+                call.respond(message = "all data is clear now", status = HttpStatusCode.Accepted)
+            }
+
         }
 
         get("/userData/{id}") {
