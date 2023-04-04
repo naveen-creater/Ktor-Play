@@ -1,14 +1,22 @@
 package com.example
 
 import com.example.model.User
+import io.ktor.client.*
+import io.ktor.client.call.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
 import io.ktor.http.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.http.content.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.async
 
 fun Application.aboutUs(){
+    val client = HttpClient(CIO)
 
     routing {
 
@@ -19,7 +27,7 @@ fun Application.aboutUs(){
         }
 
         get("/aboutUs") {
-            call.respondText("This is about us", status = HttpStatusCode.BadRequest)
+            call.respondText("This is about us", status = HttpStatusCode.OK)
         }
 
         get("/contactUs") {

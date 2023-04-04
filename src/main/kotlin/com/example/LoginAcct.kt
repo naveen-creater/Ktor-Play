@@ -13,7 +13,7 @@ fun Application.login(){
         post("/login") {
             val user = call.receive<User>()
             println(user)
-
+            user.name = "name invalid"
             call.respond(user)
         }
     }

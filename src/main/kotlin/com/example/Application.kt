@@ -10,7 +10,7 @@ import io.ktor.server.plugins.contentnegotiation.*
 
 fun main(){
 
-    embeddedServer(Netty, port = 8080){
+    embeddedServer(Netty, port = 8080, watchPaths = listOf("classes")){
       install(ContentNegotiation){
         json()
       }
@@ -19,6 +19,9 @@ fun main(){
         aboutUs()
         login()
         someCustom()
+
+        //client
+        clientCall()
 
     }.start(wait = true)
 }
